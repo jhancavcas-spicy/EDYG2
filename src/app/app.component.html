@@ -1,0 +1,69 @@
+<h1>Sistema de turnos - Clinica</h1>
+
+<p class="mensaje" *ngIf="mensaje">{{ mensaje }}</p>
+
+<div class="caja">
+  <h2>Medico de guardia (lista circular)</h2>
+
+  <div *ngIf="medicoActual as medico">
+    <p class="grande">{{ medico.nombre }}</p>
+    <p>{{ medico.especialidad }}</p>
+  </div>
+
+  <p class="rotacion">
+    Rotacion:
+    <span *ngFor="let medico of medicos">{{ medico.nombre }} &rarr; </span>
+    vuelve al primero
+  </p>
+  <button (click)="cambiarMedico()">Cambiar medico ahora</button>
+  <p class="nota">Cambia solo cada 10 segundos.</p>
+</div>
+
+<div class="caja">
+  <h2>Pacientes en espera (lista simplemente enlazada)</h2>
+
+  <div class="form">
+    <input type="text" [(ngModel)]="nombre" placeholder="Nombre" />
+    <input type="number" [(ngModel)]="edad" placeholder="Edad" />
+    <input type="text" [(ngModel)]="motivo" placeholder="Motivo" />
+    <button (click)="agregarPaciente()">Agregar</button>
+  </div>
+
+  <ol>
+    <li *ngFor="let paciente of pacientes">
+      {{ paciente.nombre }} - {{ paciente.edad }} anos - {{ paciente.motivo }}
+    </li>
+  </ol>
+
+  <p *ngIf="pacientes.length === 0" class="nota">No hay pacientes en espera.</p>
+
+  <button (click)="atenderPaciente()">Atender paciente</button>
+</div>
+
+<div class="caja">
+  <h2>Historial de atencion (lista doblemente enlazada)</h2>
+
+  <button (click)="verInverso = !verInverso">
+    {{ verInverso ? 'Ver en orden normal' : 'Ver al reves' }}
+  </button>
+
+  <ol>
+    <li *ngFor="let paciente of historial">
+      {{ paciente.nombre }} - {{ paciente.motivo }}
+    </li>
+  </ol>
+
+  <p *ngIf="historial.length === 0" class="nota">Todavia no se ha atendido a nadie.</p>
+</div>
+
+<div class="caja">
+  <h2>Comite administrativo (lista circular doble)</h2>
+
+  <button (click)="clinica.comite.retroceder()">Anterior</button>
+  <span class="grande">{{ miembroActual?.nombre }} - {{ miembroActual?.cargo }}</span>
+  <button (click)="clinica.comite.avanzar()">Siguiente</button>
+
+  <ul>
+    <li *ngFor="let miembro of comite">{{ miembro.nombre }} - {{ miembro.cargo }}</li>
+  </ul>
+</div>
