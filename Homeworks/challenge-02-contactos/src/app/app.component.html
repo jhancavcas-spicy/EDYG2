@@ -1,0 +1,19 @@
+<div class="app-container">
+  <header class="app-header">
+    <h1>Gestor de Contactos</h1>
+    <p class="subtitle">Administra tus contactos: agrega, revisa y elimina en un solo lugar.</p>
+  </header>
+
+  <main class="app-main">
+    <app-loader *ngIf="isLoading"></app-loader>
+
+    <ng-container *ngIf="!isLoading">
+      <app-contact-form (add)="onAddContact($event)"></app-contact-form>
+      <app-contact-list [contacts]="contacts" (delete)="onDeleteContact($event)"></app-contact-list>
+    </ng-container>
+  </main>
+
+  <footer class="app-footer">
+    <p>Challenge 02 · Proyecto académico de Angular</p>
+  </footer>
+</div>

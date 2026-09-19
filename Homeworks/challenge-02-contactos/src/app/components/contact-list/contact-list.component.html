@@ -1,0 +1,18 @@
+<section class="list-section">
+  <div class="list-header">
+    <h2>Contactos</h2>
+    <span class="contact-count">{{ contacts.length }}</span>
+  </div>
+
+  <div class="empty-state" *ngIf="contacts.length === 0">
+    <p>Todavía no hay contactos. Agrega el primero desde el formulario.</p>
+  </div>
+
+  <div class="contacts-grid" *ngIf="contacts.length > 0">
+    <app-contact-item
+      *ngFor="let contact of contacts; trackBy: trackByContactId"
+      [contact]="contact"
+      (delete)="onDelete($event)">
+    </app-contact-item>
+  </div>
+</section>
