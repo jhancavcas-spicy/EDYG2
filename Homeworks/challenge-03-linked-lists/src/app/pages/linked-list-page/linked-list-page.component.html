@@ -1,0 +1,43 @@
+<section class="page-header">
+  <h1>Lista Enlazada — Reproductor de Canciones</h1>
+  <p class="page-subtitle">
+    Recorre una <code>LinkedList</code> real, nodo por nodo, usando la referencia <code>next</code>.
+  </p>
+</section>
+
+<section class="player" *ngIf="currentSong as song">
+  <div class="player-info">
+    <span class="position">Canción {{ currentIndex + 1 }} de {{ total }}</span>
+    <h2>{{ song.title }}</h2>
+    <p class="artist">{{ song.artist }}</p>
+  </div>
+
+  <div class="player-controls">
+    <button type="button" (click)="previous()" [disabled]="!canGoPrevious">← Anterior</button>
+    <button type="button" (click)="next()" [disabled]="!canGoNext">Siguiente →</button>
+  </div>
+</section>
+
+<section class="visualization">
+  <h2>Visualización de la LinkedList</h2>
+  <app-linked-list-visualizer [songs]="songs" [currentIndex]="currentIndex"></app-linked-list-visualizer>
+</section>
+
+<section class="playlist">
+  <h2>Lista de canciones</h2>
+  <ol>
+    <li *ngFor="let s of songs; let i = index" [class.active]="i === currentIndex">
+      {{ s.title }} — {{ s.artist }}
+    </li>
+  </ol>
+</section>
+
+<section class="explanation">
+  <h2>¿Qué estamos demostrando?</h2>
+  <ul>
+    <li>Una <strong>lista enlazada simple</strong> guarda sus elementos en nodos; cada nodo apunta únicamente al <strong>siguiente</strong> nodo mediante <code>next</code>.</li>
+    <li>Cada nodo contiene un dato (la canción) y la referencia al siguiente nodo, o <code>null</code> si es el último.</li>
+    <li>Avanzar ("Siguiente") es directo: solo hay que seguir <code>current.next</code>.</li>
+    <li>Retroceder ("Anterior") es más costoso: como los nodos no conocen a su nodo anterior, hay que recorrer la lista completa desde el <code>head</code> hasta encontrar el nodo cuyo <code>next</code> sea el nodo actual.</li>
+  </ul>
+</section>

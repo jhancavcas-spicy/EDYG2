@@ -1,0 +1,60 @@
+.visualizer {
+  overflow-x: auto;
+  padding: 6px 2px 14px;
+}
+
+.node-track {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: min-content;
+}
+
+.node-card {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 140px;
+  padding: 12px 14px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+}
+
+.node-card.current {
+  background: var(--color-current);
+  border-color: var(--color-current-border);
+  box-shadow: 0 0 0 2px rgba(245, 166, 35, 0.25);
+}
+
+.node-index {
+  font-size: 0.72rem;
+  text-transform: lowercase;
+  color: var(--color-text-muted);
+}
+
+.node-title {
+  font-size: 0.9rem;
+  color: var(--color-text);
+}
+
+.node-subtitle {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+}
+
+.arrow {
+  flex-shrink: 0;
+  color: var(--color-text-muted);
+  font-size: 1.1rem;
+}
+
+.null-marker {
+  flex-shrink: 0;
+  color: var(--color-text-muted);
+  font-style: italic;
+  font-size: 0.9rem;
+  padding-left: 2px;
+}

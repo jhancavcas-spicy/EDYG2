@@ -1,0 +1,51 @@
+<section class="page-header">
+  <h1>Lista Doblemente Enlazada — Historial del Navegador</h1>
+  <p class="page-subtitle">
+    Simula el historial de un navegador usando una <code>DoublyLinkedList</code> real,
+    con referencias <code>prev</code> y <code>next</code>.
+  </p>
+</section>
+
+<section class="player" *ngIf="currentPage as page">
+  <div class="player-info">
+    <span class="position">Página {{ currentIndex + 1 }} de {{ total }}</span>
+    <h2>{{ page.name }}</h2>
+  </div>
+
+  <div class="player-controls">
+    <button type="button" (click)="goBack()" [disabled]="!canGoBack">← Atrás</button>
+    <button type="button" (click)="goForward()" [disabled]="!canGoForward">Adelante →</button>
+  </div>
+</section>
+
+<section class="visit-form">
+  <h2>Visitar una nueva página</h2>
+  <form (ngSubmit)="visitPage()" class="visit-form-inner">
+    <input
+      type="text"
+      name="pageName"
+      [(ngModel)]="newPageName"
+      placeholder="Ej: Facebook"
+      class="form-input">
+    <button type="submit" class="btn-primary">Visitar página</button>
+  </form>
+  <p class="hint">
+    Al visitar una página nueva desde un punto intermedio del historial, las páginas
+    "hacia adelante" se eliminan — igual que en un navegador real.
+  </p>
+</section>
+
+<section class="visualization">
+  <h2>Visualización de la DoublyLinkedList</h2>
+  <app-doubly-linked-list-visualizer [pages]="pages" [currentIndex]="currentIndex"></app-doubly-linked-list-visualizer>
+</section>
+
+<section class="explanation">
+  <h2>¿Qué estamos demostrando?</h2>
+  <ul>
+    <li>Una <strong>lista doblemente enlazada</strong> guarda en cada nodo una referencia al <strong>siguiente</strong> nodo (<code>next</code>) y al <strong>anterior</strong> (<code>prev</code>).</li>
+    <li><code>prev</code> permite saber de dónde venimos; <code>next</code> permite saber a dónde podemos ir.</li>
+    <li>Gracias a estas dos referencias, se puede navegar hacia atrás y hacia adelante sin recorrer toda la lista desde el inicio.</li>
+    <li>Visitar una página nueva desde un punto intermedio corta el historial "hacia adelante", igual que ocurre en un navegador real.</li>
+  </ul>
+</section>

@@ -1,0 +1,130 @@
+.page-header {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px 0;
+}
+
+.page-header h1 {
+  font-size: 1.5rem;
+}
+
+.page-subtitle {
+  margin-top: 8px;
+  color: var(--color-text-muted);
+}
+
+.player,
+.visit-form,
+.visualization,
+.explanation {
+  max-width: 900px;
+  margin: 20px auto 0;
+  padding: 22px 20px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+
+.explanation {
+  margin-bottom: 48px;
+}
+
+.player {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.position {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-primary-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.player-info h2 {
+  margin-top: 6px;
+  font-size: 1.3rem;
+}
+
+.player-controls {
+  display: flex;
+  gap: 10px;
+}
+
+.player-controls button {
+  padding: 10px 16px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.player-controls button:not(:disabled):hover {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #fff;
+}
+
+.visit-form h2,
+.visualization h2,
+.explanation h2 {
+  font-size: 1.05rem;
+  margin-bottom: 14px;
+}
+
+.visit-form-inner {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.form-input {
+  flex: 1;
+  min-width: 200px;
+  padding: 10px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+.form-input:focus {
+  border-color: var(--color-primary);
+  background: var(--color-surface);
+}
+
+.hint {
+  margin-top: 12px;
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+}
+
+.explanation ul {
+  margin: 0;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.explanation li {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 560px) {
+  .player {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

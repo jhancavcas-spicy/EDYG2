@@ -1,0 +1,64 @@
+.hero {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 56px 20px 8px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 1.9rem;
+  color: var(--color-text);
+  margin-bottom: 16px;
+}
+
+.hero p {
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+.cards {
+  max-width: 900px;
+  margin: 40px auto 0;
+  padding: 0 20px 56px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.demo-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 26px;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.tag {
+  align-self: flex-start;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  color: var(--color-primary-dark);
+  background: rgba(52, 84, 209, 0.1);
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+.demo-card h2 {
+  font-size: 1.2rem;
+}
+
+.demo-card p {
+  color: var(--color-text-muted);
+  font-size: 0.92rem;
+  line-height: 1.5;
+  flex: 1;
+}
+
+.demo-card .btn-primary {
+  align-self: flex-start;
+}

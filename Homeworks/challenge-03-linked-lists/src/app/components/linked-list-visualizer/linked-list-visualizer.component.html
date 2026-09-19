@@ -1,0 +1,13 @@
+<div class="visualizer">
+  <div class="node-track">
+    <ng-container *ngFor="let song of songs; let i = index">
+      <div class="node-card" [class.current]="i === currentIndex">
+        <span class="node-index">nodo {{ i }}</span>
+        <strong class="node-title">{{ song.title }}</strong>
+        <span class="node-subtitle">{{ song.artist }}</span>
+      </div>
+      <span class="arrow">→</span>
+    </ng-container>
+    <span class="null-marker">null</span>
+  </div>
+</div>

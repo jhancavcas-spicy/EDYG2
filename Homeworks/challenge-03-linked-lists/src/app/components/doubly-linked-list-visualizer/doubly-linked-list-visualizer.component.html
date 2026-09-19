@@ -1,0 +1,17 @@
+<div class="visualizer">
+  <div class="node-track">
+    <span class="null-marker">null</span>
+
+    <ng-container *ngFor="let page of pages; let i = index; let first = first">
+      <span class="arrow" *ngIf="!first">⇄</span>
+
+      <div class="node-card" [class.current]="i === currentIndex">
+        <span class="node-index">nodo {{ i }}</span>
+        <strong class="node-title">{{ page.name }}</strong>
+        <span class="node-tag" *ngIf="i === currentIndex">Página actual</span>
+      </div>
+    </ng-container>
+
+    <span class="null-marker">null</span>
+  </div>
+</div>
