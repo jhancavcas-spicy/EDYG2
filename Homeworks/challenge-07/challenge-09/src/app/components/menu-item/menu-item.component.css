@@ -1,0 +1,55 @@
+:host {
+  display: block;
+}
+
+.row {
+  display: flex;
+}
+
+.item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 16px;
+  color: #e5e7eb;
+  text-decoration: none;
+  border-left: 4px solid transparent;
+}
+
+.item:hover {
+  background: #2a313a;
+}
+
+.item.active {
+  background: #2c4a6b;
+  border-left-color: #4da3ff;
+}
+
+.title {
+  font-size: 14px;
+}
+
+small {
+  font-size: 11px;
+  color: #9ca3af;
+}
+
+.arrow {
+  padding: 0 16px;
+  border: none;
+  background: none;
+  color: #e5e7eb;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.arrow:hover {
+  background: #2a313a;
+}
+
+/* Los submenús van más oscuros y con sangría */
+.submenu {
+  padding-left: 12px;
+  background: #14181d;
+}

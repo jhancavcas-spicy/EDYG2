@@ -1,0 +1,7 @@
+<nav class="sidebar">
+  <h2>{{ root().title }}</h2>
+
+  @for (item of root().children; track item.link) {
+    <app-menu-item [node]="item" />
+  }
+</nav>

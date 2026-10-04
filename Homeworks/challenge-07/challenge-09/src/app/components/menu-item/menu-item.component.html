@@ -1,0 +1,26 @@
+<div class="row">
+  <a
+    class="item"
+    [routerLink]="node().link"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }"
+  >
+    <span class="title">{{ node().title }}</span>
+    <small>{{ node().link }} · {{ node().component }}</small>
+  </a>
+
+  @if (node().children.length > 0) {
+    <button class="arrow" type="button" (click)="toggle()">
+      {{ open() ? '▴' : '▾' }}
+    </button>
+  }
+</div>
+
+<!-- Si el nodo tiene hijos, el componente se llama a sí mismo por cada uno (recursión) -->
+@if (node().children.length > 0 && open()) {
+  <div class="submenu">
+    @for (child of node().children; track child.link) {
+      <app-menu-item [node]="child" />
+    }
+  </div>
+}
