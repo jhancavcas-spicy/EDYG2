@@ -1,0 +1,22 @@
+<div class="exercise-page">
+  <header class="exercise-header">
+    <div>
+      <h1>Ejercicio 2</h1>
+      <p class="welcome">Bienvenido, {{ auth.currentUser()?.name }}</p>
+    </div>
+    <button type="button" class="btn-danger" (click)="cerrarSesion()">Cerrar sesión</button>
+  </header>
+
+  <nav class="exercise-nav">
+    <a routerLink="/exercise-one">← Ir al Ejercicio 1</a>
+  </nav>
+
+  <section class="exercise-content">
+    <h2>Contenido del Ejercicio 2</h2>
+    <p>
+      Esta página también está protegida por <code>authGuard</code>.
+      Reemplaza este bloque con la demostración real del segundo ejercicio
+      de tu clase anterior.
+    </p>
+  </section>
+</div>

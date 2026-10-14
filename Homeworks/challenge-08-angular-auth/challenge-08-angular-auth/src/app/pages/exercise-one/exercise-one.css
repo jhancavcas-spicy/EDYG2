@@ -1,0 +1,53 @@
+.exercise-page {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 36px 20px 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.exercise-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.exercise-header h1 {
+  font-size: 1.5rem;
+}
+
+.welcome {
+  margin-top: 6px;
+  color: var(--color-text-muted);
+}
+
+.exercise-nav a {
+  color: var(--color-primary);
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+.exercise-nav a:hover {
+  text-decoration: underline;
+}
+
+.exercise-content {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 22px;
+  box-shadow: var(--shadow-card);
+}
+
+.exercise-content h2 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+.exercise-content p {
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}

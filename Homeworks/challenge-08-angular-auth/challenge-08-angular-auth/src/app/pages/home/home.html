@@ -1,0 +1,15 @@
+<div class="home-page">
+  <h1>Challenge 08 — Login, Services, Signals y Rutas Privadas</h1>
+
+  @if (auth.isAuthenticated()) {
+    <p>Sesión activa como <strong>{{ auth.currentUser()?.name }}</strong>.</p>
+    <div class="home-actions">
+      <a routerLink="/exercise-one" class="btn-primary">Ir a Ejercicio 1</a>
+      <a routerLink="/exercise-two" class="btn-primary">Ir a Ejercicio 2</a>
+      <button type="button" class="btn-danger" (click)="cerrarSesion()">Cerrar sesión</button>
+    </div>
+  } @else {
+    <p>No hay ninguna sesión activa.</p>
+    <a routerLink="/login" class="btn-primary">Iniciar sesión</a>
+  }
+</div>
