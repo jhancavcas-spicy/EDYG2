@@ -1,0 +1,4 @@
+// Orden de salida del CSS = orden de los @use: primero Bootstrap, luego nuestros estilos.
+@use 'styles/bootstrap';
+@use 'styles/base';
+@use 'styles/components';

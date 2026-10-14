@@ -1,0 +1,49 @@
+rules_version = '2';
+
+// Reglas de seguridad de Cloud Firestore para el Challenge 09.
+// Cada usuario autenticado solo puede leer y modificar las tareas cuyo `userId` sea su UID.
+// IMPORTANTE: se publican desde Firebase Console (Firestore → Reglas) o con
+// `firebase deploy --only firestore:rules`; el frontend por sí solo NO protege los datos.
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Campos permitidos y sus tipos/longitudes (deben coincidir con task.model.ts).
+    function hasValidShape(data) {
+      return data.keys().hasOnly(['title', 'description', 'completed', 'userId', 'createdAt', 'updatedAt'])
+        && data.title is string && data.title.size() > 0 && data.title.size() <= 120
+        && data.description is string && data.description.size() <= 500
+        && data.completed is bool
+        && data.userId is string
+        && data.createdAt is timestamp
+        && data.updatedAt is timestamp;
+    }
+
+    match /tasks/{taskId} {
+      // Leer: solo tareas propias (también aplica a consultas con where('userId', '==', uid)).
+      allow read: if request.auth != null
+                  && resource.data.userId == request.auth.uid;
+
+      // Crear: la tarea debe quedar a nombre del usuario que la crea.
+      allow create: if request.auth != null
+                    && request.resource.data.userId == request.auth.uid
+                    && request.resource.data.completed == false
+                    && request.resource.data.createdAt == request.time
+                    && request.resource.data.updatedAt == request.time
+                    && hasValidShape(request.resource.data);
+
+      // Actualizar: solo el dueño; no puede cambiar el dueño ni la fecha de creación.
+      allow update: if request.auth != null
+                    && resource.data.userId == request.auth.uid
+                    && request.resource.data.userId == resource.data.userId
+                    && request.resource.data.createdAt == resource.data.createdAt
+                    && request.resource.data.updatedAt == request.time
+                    && hasValidShape(request.resource.data);
+
+      // Eliminar: solo el dueño.
+      allow delete: if request.auth != null
+                    && resource.data.userId == request.auth.uid;
+    }
+
+    // Todo lo demás queda denegado por defecto.
+  }
+}

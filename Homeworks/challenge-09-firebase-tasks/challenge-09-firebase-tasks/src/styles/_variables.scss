@@ -1,0 +1,50 @@
+// ============================================================
+// Variables Sass: colores, bordes, espacios y tipografía.
+// Cambiar un valor aquí cambia toda la aplicación.
+// ============================================================
+
+// Colores de marca
+$primary: #4f46e5;
+$primary-dark: #3730a3;
+$primary-soft: #eef2ff;
+$primary-border: #c7d2fe;
+
+// Estados
+$success: #15803d;
+$warning: #b45309;
+$danger: #dc2626;
+
+// Superficies y texto
+$body-bg: #f5f6fb;
+$surface: #ffffff;
+$surface-muted: #f3f4f6;
+$text: #1f2937;
+$text-soft: #4b5563;
+$muted: #6b7280;
+$border-color: #e5e7eb;
+$border-strong: #d1d5db;
+
+// Bordes y sombras
+$radius: 0.875rem;
+$radius-sm: 0.5rem;
+$shadow-card: 0 1px 2px rgba(16, 24, 40, 0.05), 0 8px 24px rgba(16, 24, 40, 0.06);
+
+// Espaciado base (se usa con la función `space()`), tipografía
+$space-unit: 0.25rem;
+$font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+// Puntos de quiebre (iguales a los de Bootstrap)
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoints: (
+  sm: $breakpoint-sm,
+  md: $breakpoint-md,
+  lg: $breakpoint-lg,
+);
+
+// Colores por estado de tarea (se recorren con @each en _components.scss)
+$status-colors: (
+  pending: $warning,
+  completed: $success,
+);

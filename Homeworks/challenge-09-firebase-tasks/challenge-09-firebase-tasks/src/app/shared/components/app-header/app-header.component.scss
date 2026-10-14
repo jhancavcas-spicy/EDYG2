@@ -1,0 +1,58 @@
+@use '../../../../styles/variables' as v;
+@use '../../../../styles/functions' as f;
+@use '../../../../styles/mixins' as m;
+
+.app-header {
+  background: v.$surface;
+  border-bottom: 1px solid v.$border-color;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+// Fila del encabezado: marca | correo | botón (en móvil el correo baja a su propia línea).
+.header-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: f.space(3);
+
+  .brand {
+    margin-right: auto;
+  }
+
+  .logout-btn {
+    order: 2;
+  }
+
+  .user-chip {
+    order: 3;
+    flex: 1 0 100%;
+  }
+
+  @include m.respond-up(sm) {
+    flex-wrap: nowrap;
+
+    .logout-btn {
+      order: 3;
+    }
+
+    .user-chip {
+      order: 2;
+      flex: 0 1 auto;
+    }
+  }
+}
+
+.user-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: f.space(2);
+  min-width: 0;
+  padding: f.space(1) f.space(3);
+  border-radius: 999px;
+  background: v.$primary-soft;
+  color: v.$primary-dark;
+  font-size: f.rem(14);
+  font-weight: 500;
+}

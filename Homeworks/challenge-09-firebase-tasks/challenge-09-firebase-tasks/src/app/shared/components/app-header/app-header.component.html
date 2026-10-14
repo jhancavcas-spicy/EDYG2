@@ -1,0 +1,35 @@
+<header class="app-header">
+  <div class="container header-row py-3">
+    <a class="brand" routerLink="/tasks" aria-label="TaskFlow">
+      <span class="brand__mark"><i class="bi bi-check2-square" aria-hidden="true"></i></span>
+      <span class="brand__name">TaskFlow</span>
+    </a>
+
+    @if (user(); as current) {
+      <span class="user-chip" [title]="current.email ?? ''">
+        <i class="bi bi-person-circle" aria-hidden="true"></i>
+        <span class="text-truncate">{{ current.email }}</span>
+      </span>
+    }
+
+    <button
+      type="button"
+      class="btn btn-outline-secondary btn-sm logout-btn d-inline-flex align-items-center gap-2"
+      [disabled]="loggingOut()"
+      (click)="logout()"
+    >
+      @if (loggingOut()) {
+        <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+      } @else {
+        <i class="bi bi-box-arrow-right" aria-hidden="true"></i>
+      }
+      Cerrar sesión
+    </button>
+  </div>
+
+  @if (error(); as message) {
+    <div class="container pb-3">
+      <app-alert type="danger" [dismissible]="true" (closed)="error.set(null)">{{ message }}</app-alert>
+    </div>
+  }
+</header>

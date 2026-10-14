@@ -1,0 +1,31 @@
+@if (open()) {
+  <div class="modal-backdrop fade show"></div>
+  <div
+    class="modal d-block"
+    tabindex="-1"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="confirm-dialog-title"
+    (click)="onBackdropClick($event)"
+  >
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow">
+        <div class="modal-header border-0 pb-0">
+          <h2 class="modal-title h5" id="confirm-dialog-title">{{ title() }}</h2>
+        </div>
+        <div class="modal-body text-secondary">{{ message() }}</div>
+        <div class="modal-footer border-0 pt-0">
+          <button #cancelButton type="button" class="btn btn-outline-secondary" [disabled]="busy()" (click)="cancelled.emit()">
+            Cancelar
+          </button>
+          <button type="button" class="btn btn-danger d-inline-flex align-items-center gap-2" [disabled]="busy()" (click)="confirmed.emit()">
+            @if (busy()) {
+              <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+            }
+            {{ confirmLabel() }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+}

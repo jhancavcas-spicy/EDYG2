@@ -1,0 +1,12 @@
+@use 'sass:math';
+@use 'variables' as v;
+
+// px -> rem (operación matemática de Sass)
+@function rem($px, $base: 16) {
+  @return math.div($px, $base) * 1rem;
+}
+
+// Múltiplos del espaciado base: space(4) = 1rem
+@function space($steps) {
+  @return $steps * v.$space-unit;
+}

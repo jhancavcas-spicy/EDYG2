@@ -1,0 +1,64 @@
+<form class="card surface" [formGroup]="form" (ngSubmit)="submit()" novalidate>
+  <div class="card-body p-4">
+    <h2 class="h5 fw-semibold mb-1">{{ isEditing() ? 'Editar tarea' : 'Nueva tarea' }}</h2>
+    <p class="text-secondary small mb-4">
+      {{ isEditing() ? 'Modifica el título o la descripción y guarda los cambios.' : 'Escribe qué necesitas hacer.' }}
+    </p>
+
+    <div class="mb-3">
+      <label for="task-title" class="form-label">Título <span class="text-danger">*</span></label>
+      <input
+        id="task-title"
+        type="text"
+        class="form-control"
+        formControlName="title"
+        placeholder="Ej: Preparar la sustentación"
+        [class.is-invalid]="form.controls.title.touched && form.controls.title.invalid"
+        [attr.maxlength]="limits.titleMax + 20"
+      />
+      @if (form.controls.title.touched && form.controls.title.errors; as errors) {
+        <div class="invalid-feedback d-block">
+          @if (errors['required'] || errors['blank']) {
+            El título es obligatorio.
+          } @else if (errors['maxlength']) {
+            Máximo {{ limits.titleMax }} caracteres.
+          }
+        </div>
+      }
+    </div>
+
+    <div class="mb-4">
+      <label for="task-description" class="form-label">Descripción <span class="text-secondary">(opcional)</span></label>
+      <textarea
+        id="task-description"
+        rows="3"
+        class="form-control"
+        formControlName="description"
+        placeholder="Detalles, enlaces, pasos…"
+        [class.is-invalid]="form.controls.description.invalid"
+      ></textarea>
+      <div class="d-flex justify-content-between mt-1">
+        @if (form.controls.description.errors?.['maxlength']) {
+          <div class="invalid-feedback d-block">Máximo {{ limits.descriptionMax }} caracteres.</div>
+        } @else {
+          <span></span>
+        }
+        <small class="text-secondary">{{ form.controls.description.value.length }}/{{ limits.descriptionMax }}</small>
+      </div>
+    </div>
+
+    <div class="d-flex gap-2">
+      <button type="submit" class="btn btn-primary flex-grow-1 d-inline-flex justify-content-center align-items-center gap-2" [disabled]="saving()">
+        @if (saving()) {
+          <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+        }
+        {{ isEditing() ? 'Guardar cambios' : 'Crear tarea' }}
+      </button>
+      @if (isEditing()) {
+        <button type="button" class="btn btn-outline-secondary" [disabled]="saving()" (click)="cancelEdit.emit()">
+          Cancelar
+        </button>
+      }
+    </div>
+  </div>
+</form>

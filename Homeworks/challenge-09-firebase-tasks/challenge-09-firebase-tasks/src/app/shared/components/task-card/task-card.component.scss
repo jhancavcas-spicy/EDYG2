@@ -1,0 +1,52 @@
+@use '../../../../styles/variables' as v;
+@use '../../../../styles/mixins' as m;
+
+.task-card {
+  @include m.surface;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+
+  &:hover {
+    border-color: v.$primary-border;
+  }
+
+  &--editing {
+    border-color: v.$primary;
+    box-shadow: 0 0 0 3px v.$primary-soft;
+  }
+
+  // Las tareas completadas se ven atenuadas y con el título tachado.
+  &--completed {
+    background: v.$surface-muted;
+
+    .task-card__title {
+      text-decoration: line-through;
+      color: v.$muted;
+    }
+
+    .task-card__description {
+      color: v.$muted;
+    }
+  }
+
+  &__title {
+    word-break: break-word;
+  }
+
+  &__description {
+    white-space: pre-wrap;
+    word-break: break-word;
+    color: v.$text-soft;
+  }
+}
+
+.task-check {
+  width: 1.25rem;
+  height: 1.25rem;
+  cursor: pointer;
+}
+
+.min-w-0 {
+  min-width: 0;
+}

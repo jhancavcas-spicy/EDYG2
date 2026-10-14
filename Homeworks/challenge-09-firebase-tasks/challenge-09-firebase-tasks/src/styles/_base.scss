@@ -1,0 +1,36 @@
+@use 'variables' as v;
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  background: v.$body-bg;
+  color: v.$text;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+// Foco visible para navegación con teclado
+:focus-visible {
+  outline: 3px solid rgba(v.$primary, 0.45);
+  outline-offset: 2px;
+}
+
+// Cuando se muestran los mensajes de validación junto a los campos
+.invalid-feedback {
+  font-size: 0.875rem;
+}
+
+// Evita que el código dentro de las alertas desborde en pantallas pequeñas
+.alert code {
+  word-break: break-all;
+}

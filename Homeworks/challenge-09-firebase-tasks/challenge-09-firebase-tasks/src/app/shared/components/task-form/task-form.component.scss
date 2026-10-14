@@ -1,0 +1,18 @@
+@use '../../../../styles/variables' as v;
+
+// El formulario se queda visible mientras se recorre la lista en pantallas grandes.
+:host {
+  display: block;
+}
+
+@media (min-width: v.$breakpoint-lg) {
+  :host {
+    position: sticky;
+    top: 5.5rem;
+  }
+}
+
+textarea {
+  resize: vertical;
+  min-height: 5rem;
+}

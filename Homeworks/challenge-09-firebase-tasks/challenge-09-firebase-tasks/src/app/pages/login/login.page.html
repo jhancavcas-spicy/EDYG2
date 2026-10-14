@@ -1,0 +1,73 @@
+<main class="auth-page">
+  <div class="auth-card">
+    <div class="auth-card__brand">
+      <span class="brand__mark"><i class="bi bi-check2-square" aria-hidden="true"></i></span>
+      <span class="brand__name">TaskFlow</span>
+    </div>
+
+    <h1 class="h3 fw-bold mb-1">Bienvenido de nuevo</h1>
+    <p class="text-secondary mb-4">Inicia sesión para ver tus tareas.</p>
+
+    @if (!firebaseConfigured) {
+      <div class="mb-3"><app-config-notice /></div>
+    }
+
+    @if (action.error(); as message) {
+      <div class="mb-3"><app-alert type="danger">{{ message }}</app-alert></div>
+    }
+
+    <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+      <div class="mb-3">
+        <label for="login-email" class="form-label">Correo electrónico</label>
+        <input
+          id="login-email"
+          type="email"
+          class="form-control form-control-lg"
+          formControlName="email"
+          autocomplete="email"
+          placeholder="tucorreo@ejemplo.com"
+          [class.is-invalid]="form.controls.email.touched && form.controls.email.invalid"
+        />
+        @if (form.controls.email.touched && form.controls.email.errors; as errors) {
+          <div class="invalid-feedback d-block">
+            @if (errors['required']) {
+              El correo electrónico es obligatorio.
+            } @else {
+              Escribe un correo válido, por ejemplo nombre&#64;dominio.com.
+            }
+          </div>
+        }
+      </div>
+
+      <div class="mb-4">
+        <label for="login-password" class="form-label">Contraseña</label>
+        <input
+          id="login-password"
+          type="password"
+          class="form-control form-control-lg"
+          formControlName="password"
+          autocomplete="current-password"
+          placeholder="Tu contraseña"
+          [class.is-invalid]="form.controls.password.touched && form.controls.password.invalid"
+        />
+        @if (form.controls.password.touched && form.controls.password.errors) {
+          <div class="invalid-feedback d-block">La contraseña es obligatoria.</div>
+        }
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-lg w-100 d-inline-flex justify-content-center align-items-center gap-2" [disabled]="action.loading()">
+        @if (action.loading()) {
+          <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+          Iniciando sesión…
+        } @else {
+          Iniciar sesión
+        }
+      </button>
+    </form>
+
+    <p class="text-center text-secondary mt-4 mb-0">
+      ¿Aún no tienes cuenta?
+      <a routerLink="/register" class="fw-semibold">Regístrate</a>
+    </p>
+  </div>
+</main>

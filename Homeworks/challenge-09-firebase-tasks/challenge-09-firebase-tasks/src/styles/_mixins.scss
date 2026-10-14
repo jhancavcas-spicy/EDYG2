@@ -1,0 +1,31 @@
+@use 'sass:color';
+@use 'sass:map';
+@use 'variables' as v;
+
+// Media queries a partir de los puntos de quiebre definidos
+@mixin respond-up($name) {
+  @media (min-width: map.get(v.$breakpoints, $name)) {
+    @content;
+  }
+}
+
+@mixin respond-down($name) {
+  @media (max-width: map.get(v.$breakpoints, $name) - 0.02px) {
+    @content;
+  }
+}
+
+// Tarjeta con borde suave y sombra
+@mixin surface {
+  background: v.$surface;
+  border: 1px solid v.$border-color;
+  border-radius: v.$radius;
+  box-shadow: v.$shadow-card;
+}
+
+// Etiqueta de estado a partir de un solo color
+@mixin badge-variant($base) {
+  color: color.scale($base, $lightness: -15%);
+  background: color.scale($base, $lightness: 88%, $saturation: -20%);
+  border: 1px solid color.scale($base, $lightness: 70%, $saturation: -20%);
+}

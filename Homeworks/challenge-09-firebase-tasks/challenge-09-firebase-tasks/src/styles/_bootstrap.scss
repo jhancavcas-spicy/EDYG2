@@ -1,0 +1,23 @@
+// Bootstrap personalizado: se sobreescriben sus variables ANTES de importarlo.
+// (Bootstrap 5 todavía usa @import internamente, por eso se silencia ese aviso en angular.json.)
+@use 'variables' as v;
+
+$primary: v.$primary;
+$success: v.$success;
+$warning: v.$warning;
+$danger: v.$danger;
+$body-bg: v.$body-bg;
+$body-color: v.$text;
+$font-family-sans-serif: v.$font-sans;
+$border-radius: v.$radius-sm;
+$border-radius-lg: v.$radius;
+$border-color: v.$border-color;
+$input-bg: v.$surface;
+$input-border-color: v.$border-strong;
+$input-focus-border-color: v.$primary;
+$input-focus-box-shadow: 0 0 0 0.2rem rgba(v.$primary, 0.2);
+$btn-font-weight: 600;
+$headings-font-weight: 700;
+$enable-shadows: false;
+
+@import 'bootstrap/scss/bootstrap';

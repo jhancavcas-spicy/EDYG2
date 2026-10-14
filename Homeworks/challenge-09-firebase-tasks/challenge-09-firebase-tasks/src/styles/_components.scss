@@ -1,0 +1,83 @@
+@use 'sass:map';
+@use 'variables' as v;
+@use 'functions' as f;
+@use 'mixins' as m;
+
+// ---------- Marca ----------
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: f.space(2);
+  color: v.$text;
+  font-weight: 700;
+  font-size: f.rem(20);
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &__mark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: v.$radius-sm;
+    background: v.$primary;
+    color: #fff;
+    font-size: f.rem(18);
+  }
+}
+
+// ---------- Tarjeta tipo "surface" (formularios, listas) ----------
+.surface {
+  @include m.surface;
+}
+
+// ---------- Páginas de acceso (Login / Register / 404) ----------
+.auth-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: f.space(4);
+  background:
+    radial-gradient(60rem 30rem at 10% -10%, v.$primary-soft, transparent 60%),
+    radial-gradient(40rem 24rem at 100% 100%, #e0f2fe, transparent 60%), v.$body-bg;
+}
+
+.auth-card {
+  @include m.surface;
+  width: 100%;
+  max-width: 26rem;
+  padding: f.space(6);
+
+  &__brand {
+    display: flex;
+    align-items: center;
+    gap: f.space(2);
+    margin-bottom: f.space(6);
+    font-size: f.rem(20);
+    font-weight: 700;
+  }
+
+  @include m.respond-up(sm) {
+    padding: f.space(10);
+  }
+}
+
+// ---------- Etiquetas de estado: se generan con un bucle @each ----------
+.status-badge {
+  display: inline-block;
+  padding: f.space(1) f.space(3);
+  border-radius: 999px;
+  font-size: f.rem(12);
+  font-weight: 600;
+  white-space: nowrap;
+
+  @each $name, $color in v.$status-colors {
+    &--#{$name} {
+      @include m.badge-variant($color);
+    }
+  }
+}
