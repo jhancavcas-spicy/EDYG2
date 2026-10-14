@@ -1,0 +1,26 @@
+<header>
+  <h1>Explorador de archivos</h1>
+  <span>{{ auth.email() }} <button (click)="logout()">Salir</button></span>
+</header>
+
+<section class="panel">
+  <form (ngSubmit)="create()">
+    <span class="dest">
+      Crear en: <strong>{{ (selected() ?? fs.root()).name }}</strong>
+    </span>
+    <select name="type" [(ngModel)]="type">
+      <option value="folder">📁 Carpeta</option>
+      <option value="file">📄 Archivo</option>
+    </select>
+    <input name="name" placeholder="Nombre" [(ngModel)]="name" />
+    <button type="submit">Crear</button>
+  </form>
+  @if (message()) {
+    <p [class.error]="isError()" class="msg">{{ message() }}</p>
+  }
+</section>
+
+<section class="panel tree">
+  <app-node-item [node]="fs.root()" [selectedId]="selected()?.id ?? null"
+                 (select)="select($event)" (remove)="remove($event)" />
+</section>

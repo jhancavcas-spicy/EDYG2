@@ -1,0 +1,17 @@
+$bg: #f4f6fb;
+$surface: #fff;
+$primary: #3b6cf6;
+$danger: #d6393a;
+$ok: #1f8a4c;
+$muted: #7a8296;
+$border: #d5dae5;
+$hover: #eef2ff;
+$selected: #dbe5ff;
+
+@mixin card {
+  background: $surface;
+  border: 1px solid $border;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .06);
+}

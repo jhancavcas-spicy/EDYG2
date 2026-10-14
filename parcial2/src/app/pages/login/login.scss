@@ -1,0 +1,14 @@
+@use '../../../styles/vars' as v;
+
+:host { display: grid; place-items: center; min-height: 100vh; }
+
+.card {
+  @include v.card;
+  width: min(360px, 90vw);
+  display: flex; flex-direction: column; gap: .75rem;
+  h1 { margin: 0 0 .5rem; font-size: 1.4rem; }
+  form { display: flex; flex-direction: column; gap: .6rem; }
+  small { color: v.$muted; text-align: center; }
+}
+.error { color: v.$danger; margin: 0; font-size: .9rem; }
+.link { background: none; color: v.$primary; border: 0; cursor: pointer; }

@@ -1,0 +1,22 @@
+@let n = node();
+<div class="row" [class.selected]="selectedId() === n.id" (click)="select.emit(n)">
+  <span class="icon" (click)="toggle(); $event.stopPropagation()">
+    @if (n.isFolder) { {{ open() ? '📂' : '📁' }} } @else { 📄 }
+  </span>
+  <span class="name">{{ n.name }}</span>
+  <small class="owner">{{ n.createdBy }}</small>
+  @if (n.parent) {
+    <button class="del" title="Eliminar" (click)="remove.emit(n); $event.stopPropagation()">✕</button>
+  }
+</div>
+
+@if (n.isFolder && open() && n.children.length) {
+  <ul>
+    @for (child of n.children; track child.id) {
+      <li>
+        <app-node-item [node]="child" [selectedId]="selectedId()"
+                       (select)="select.emit($event)" (remove)="remove.emit($event)" />
+      </li>
+    }
+  </ul>
+}

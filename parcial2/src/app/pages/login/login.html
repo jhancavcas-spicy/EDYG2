@@ -1,0 +1,15 @@
+<main class="card">
+  <h1>{{ mode() === 'login' ? 'Iniciar sesión' : 'Registro' }}</h1>
+  <form (ngSubmit)="submit()">
+    <input name="email" type="email" placeholder="Correo" [(ngModel)]="email" required />
+    <input name="password" type="password" placeholder="Contraseña" [(ngModel)]="password" required />
+    @if (error()) {
+      <p class="error">{{ error() }}</p>
+    }
+    <button type="submit">{{ mode() === 'login' ? 'Entrar' : 'Registrarme' }}</button>
+  </form>
+  <button class="link" type="button" (click)="toggle()">
+    {{ mode() === 'login' ? '¿No tienes cuenta? Regístrate' : 'Ya tengo cuenta' }}
+  </button>
+  <small>Demo: user&#64;mail.com / 123</small>
+</main>
