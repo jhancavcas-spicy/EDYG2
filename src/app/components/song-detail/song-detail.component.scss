@@ -1,0 +1,52 @@
+@use 'variables' as v;
+@use 'mixins' as m;
+
+.song-detail__body {
+  @include m.flex-row(v.$space-md);
+  align-items: flex-start;
+}
+
+.song-detail__cover {
+  @include m.flex-center;
+  flex-shrink: 0;
+  width: 72px;
+  height: 72px;
+  border-radius: v.$radius-md;
+  background: linear-gradient(135deg, v.$color-accent-soft, v.$color-accent-secondary-soft);
+  font-size: v.$font-size-xxl;
+  font-weight: v.$font-weight-bold;
+}
+
+.song-detail__title {
+  font-size: v.$font-size-lg;
+  font-weight: v.$font-weight-semibold;
+}
+
+.song-detail__artist {
+  color: v.$color-text-secondary;
+  margin-top: v.$space-xs;
+}
+
+.song-detail__meta {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: v.$space-xs v.$space-lg;
+  margin-top: v.$space-md;
+
+  div {
+    display: contents;
+  }
+
+  dt {
+    font-size: v.$font-size-xs;
+    color: v.$color-text-muted;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  dd {
+    margin: 0;
+    font-size: v.$font-size-sm;
+    color: v.$color-text-primary;
+  }
+}

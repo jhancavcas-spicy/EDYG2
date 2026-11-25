@@ -1,0 +1,37 @@
+<div class="search-bar">
+  <div class="search-bar__input-wrap">
+    <span class="search-bar__icon" aria-hidden="true">🔍</span>
+    <input
+      class="search-bar__input"
+      type="text"
+      placeholder="Busca una canción por título..."
+      [(ngModel)]="query"
+      (input)="onInputChange()"
+      (focus)="onFocus()"
+      (blur)="onBlur()"
+      aria-label="Buscador predictivo de canciones"
+      autocomplete="off"
+    />
+    @if (query) {
+      <button type="button" class="btn--icon search-bar__clear" (click)="clear()" aria-label="Limpiar búsqueda">
+        ✕
+      </button>
+    }
+  </div>
+
+  @if (isOpen) {
+    <ul class="search-bar__suggestions fade-in">
+      @for (title of suggestions; track title) {
+        <li>
+          <button type="button" class="search-bar__suggestion" (mousedown)="selectSuggestion(title)">
+            {{ title }}
+          </button>
+        </li>
+      }
+
+      @if (showNoResults) {
+        <li class="search-bar__no-results">No hay canciones que coincidan con "{{ query }}".</li>
+      }
+    </ul>
+  }
+</div>

@@ -1,0 +1,62 @@
+<div class="dashboard">
+  <app-sidebar></app-sidebar>
+
+  <div class="dashboard__main">
+    <header class="topbar">
+      <app-search-bar (songSelected)="onSongSelected($event)"></app-search-bar>
+      <div class="topbar__title">
+        <h1>Panel de rankings</h1>
+        <p class="panel__subtitle">Mini plataforma educativa de música</p>
+      </div>
+    </header>
+
+    <div class="dashboard__content">
+      <!-- Columna principal: populares + recomendaciones -->
+      <div class="dashboard__section">
+        <section class="panel">
+          <header class="panel__header">
+            <div>
+              <h2 class="panel__title">Canciones populares</h2>
+              <p class="panel__subtitle">Catálogo completo de la plataforma</p>
+            </div>
+          </header>
+          <div class="song-grid">
+            @for (song of topSongs; track song.id) {
+              <app-song-card
+                [song]="song"
+                [selected]="song.id === selectedSong?.id"
+                (select)="onSongSelected($event)"
+              ></app-song-card>
+            }
+          </div>
+        </section>
+
+        <app-recommendations-panel
+          [selectedSong]="selectedSong"
+          [recommendations]="recommendations"
+          (select)="onSongSelected($event)"
+        ></app-recommendations-panel>
+      </div>
+
+      <!-- Columna lateral: ranking TOP + detalle -->
+      <div class="dashboard__section">
+        <section class="panel">
+          <header class="panel__header">
+            <div>
+              <h2 class="panel__title">Ranking TOP {{ topCount }}</h2>
+              <p class="panel__subtitle">Calculado con Max Heap</p>
+            </div>
+            <span class="tag">Max Heap</span>
+          </header>
+          <app-ranking-list
+            [songs]="topSongs"
+            [selectedSongId]="selectedSong?.id ?? null"
+            (select)="onSongSelected($event)"
+          ></app-ranking-list>
+        </section>
+
+        <app-song-detail [song]="selectedSong"></app-song-detail>
+      </div>
+    </div>
+  </div>
+</div>

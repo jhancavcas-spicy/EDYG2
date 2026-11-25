@@ -1,0 +1,15 @@
+@use 'variables' as v;
+@use 'mixins' as m;
+
+.topbar__title {
+  text-align: right;
+
+  h1 {
+    font-size: v.$font-size-lg;
+    font-weight: v.$font-weight-semibold;
+  }
+
+  @include m.respond-down(v.$breakpoint-md) {
+    display: none;
+  }
+}

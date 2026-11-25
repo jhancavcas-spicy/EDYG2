@@ -1,0 +1,88 @@
+@use 'variables' as v;
+@use 'mixins' as m;
+
+.search-bar {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+}
+
+.search-bar__input-wrap {
+  @include m.flex-row(v.$space-sm);
+  background-color: v.$color-surface;
+  border: 1px solid v.$color-border;
+  border-radius: v.$radius-pill;
+  padding: 0.55rem v.$space-md;
+  transition: border-color v.$transition-base;
+
+  &:focus-within {
+    border-color: v.$color-accent;
+  }
+}
+
+.search-bar__icon {
+  color: v.$color-text-muted;
+  font-size: v.$font-size-sm;
+}
+
+.search-bar__input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: v.$color-text-primary;
+  font-size: v.$font-size-sm;
+
+  &::placeholder {
+    color: v.$color-text-muted;
+  }
+}
+
+.search-bar__clear {
+  width: 1.5rem;
+  height: 1.5rem;
+  font-size: v.$font-size-xs;
+}
+
+.search-bar__suggestions {
+  @include m.thin-scrollbar;
+
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 0;
+  right: 0;
+  max-height: 280px;
+  overflow-y: auto;
+  background-color: v.$color-bg-elevated;
+  border: 1px solid v.$color-border;
+  border-radius: v.$radius-md;
+  box-shadow: v.$shadow-md;
+  list-style: none;
+  margin: 0;
+  padding: v.$space-xs;
+  z-index: 20;
+}
+
+.search-bar__suggestion {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 0.5rem 0.75rem;
+  background: none;
+  border: none;
+  border-radius: v.$radius-sm;
+  color: v.$color-text-primary;
+  font-size: v.$font-size-sm;
+  cursor: pointer;
+  transition: background-color v.$transition-fast;
+
+  &:hover {
+    background-color: v.$color-surface-hover;
+  }
+}
+
+.search-bar__no-results {
+  padding: 0.6rem 0.75rem;
+  color: v.$color-text-muted;
+  font-size: v.$font-size-sm;
+}

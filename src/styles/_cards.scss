@@ -1,0 +1,141 @@
+@use 'variables' as v;
+@use 'mixins' as m;
+
+
+
+.song-card {
+  @include m.card-base;
+  @include m.hoverable;
+
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-sm;
+  padding: v.$space-md;
+  position: relative;
+
+  &.is-selected {
+    border-color: v.$color-accent;
+    box-shadow: v.$shadow-glow-accent;
+  }
+
+  &__cover {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: v.$radius-sm;
+    background: linear-gradient(135deg, v.$color-accent-soft, v.$color-accent-secondary-soft);
+    @include m.flex-center;
+    font-size: v.$font-size-xxl;
+    color: v.$color-text-primary;
+    overflow: hidden;
+  }
+
+  &__title {
+    @include m.text-truncate;
+    font-weight: v.$font-weight-semibold;
+    font-size: v.$font-size-base;
+    color: v.$color-text-primary;
+  }
+
+  &__artist {
+    @include m.text-truncate;
+    font-size: v.$font-size-sm;
+    color: v.$color-text-secondary;
+  }
+
+  &__meta {
+    @include m.flex-row(v.$space-xs);
+    font-size: v.$font-size-xs;
+    color: v.$color-text-muted;
+  }
+}
+
+.rank-card {
+  @include m.card-base;
+  @include m.hoverable;
+  @include m.flex-row(v.$space-md);
+
+  padding: v.$space-sm v.$space-md;
+
+  &__position {
+    @include m.flex-center;
+    flex-shrink: 0;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    font-weight: v.$font-weight-bold;
+    font-size: v.$font-size-sm;
+    background-color: v.$color-surface-hover;
+    color: v.$color-text-secondary;
+
+    &--top {
+      background-color: rgba(v.$color-rank-gold, 0.18);
+      color: v.$color-rank-gold;
+    }
+  }
+
+  &__info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__title {
+    @include m.text-truncate;
+    font-weight: v.$font-weight-medium;
+    color: v.$color-text-primary;
+  }
+
+  &__artist {
+    @include m.text-truncate;
+    font-size: v.$font-size-sm;
+    color: v.$color-text-secondary;
+  }
+
+  &__plays {
+    flex-shrink: 0;
+    font-size: v.$font-size-sm;
+    font-weight: v.$font-weight-semibold;
+    color: v.$color-accent;
+  }
+}
+
+.panel {
+  @include m.card-base;
+  padding: v.$space-lg;
+
+  &__header {
+    @include m.flex-row;
+    justify-content: space-between;
+    margin-bottom: v.$space-md;
+  }
+
+  &__title {
+    font-size: v.$font-size-lg;
+    font-weight: v.$font-weight-semibold;
+    color: v.$color-text-primary;
+  }
+
+  &__subtitle {
+    font-size: v.$font-size-sm;
+    color: v.$color-text-muted;
+  }
+
+  &__empty {
+    @include m.flex-center;
+    flex-direction: column;
+    gap: v.$space-sm;
+    padding: v.$space-xl 0;
+    color: v.$color-text-muted;
+    text-align: center;
+  }
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.15rem 0.6rem;
+  border-radius: v.$radius-pill;
+  font-size: v.$font-size-xs;
+  font-weight: v.$font-weight-medium;
+  background-color: v.$color-accent-secondary-soft;
+  color: v.$color-accent-secondary;
+}

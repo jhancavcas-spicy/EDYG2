@@ -1,0 +1,48 @@
+
+
+@use 'styles/variables' as v;
+@use 'styles/mixins' as m;
+@use 'styles/buttons';
+@use 'styles/cards';
+@use 'styles/dashboard';
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  background-color: v.$color-bg;
+  color: v.$color-text-primary;
+  font-family: v.$font-family-base;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+input,
+button {
+  font-family: inherit;
+}
+
+::selection {
+  background-color: v.$color-accent;
+  color: #07130d;
+}

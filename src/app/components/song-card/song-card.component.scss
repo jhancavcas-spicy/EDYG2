@@ -1,0 +1,8 @@
+// La mayoría del estilo visual de la tarjeta vive en styles/_cards.scss
+// (clase global .song-card), para que sea reutilizable entre componentes.
+// Aquí solo se ajustan detalles específicos de este componente.
+
+:host {
+  display: block;
+  outline: none;
+}

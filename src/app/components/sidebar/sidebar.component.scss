@@ -1,0 +1,101 @@
+@use 'variables' as v;
+@use 'mixins' as m;
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: v.$space-lg;
+  border-right: 1px solid v.$color-border;
+  background-color: v.$color-bg-elevated;
+
+  @include m.respond-down(v.$breakpoint-md) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-right: none;
+    border-bottom: 1px solid v.$color-border;
+    padding: v.$space-md v.$space-lg;
+  }
+}
+
+.sidebar__brand {
+  @include m.flex-row(v.$space-sm);
+  margin-bottom: v.$space-xl;
+
+  @include m.respond-down(v.$breakpoint-md) {
+    margin-bottom: 0;
+  }
+}
+
+.sidebar__logo {
+  @include m.flex-center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: v.$radius-sm;
+  background-color: v.$color-accent;
+  color: #07130d;
+  font-weight: v.$font-weight-bold;
+}
+
+.sidebar__name {
+  font-weight: v.$font-weight-bold;
+  font-size: v.$font-size-lg;
+  letter-spacing: 0.01em;
+}
+
+.sidebar__nav {
+  display: flex;
+  flex-direction: column;
+  gap: v.$space-xs;
+  flex: 1;
+
+  @include m.respond-down(v.$breakpoint-md) {
+    flex-direction: row;
+  }
+}
+
+.sidebar__nav-item {
+  @include m.flex-row(v.$space-sm);
+  @include m.focus-ring;
+  padding: 0.6rem v.$space-md;
+  border-radius: v.$radius-sm;
+  color: v.$color-text-secondary;
+  font-size: v.$font-size-sm;
+  font-weight: v.$font-weight-medium;
+  transition: background-color v.$transition-fast, color v.$transition-fast;
+
+  &:hover {
+    background-color: v.$color-surface-hover;
+    color: v.$color-text-primary;
+  }
+
+  &.is-active {
+    background-color: v.$color-accent-soft;
+    color: v.$color-accent;
+  }
+
+  @include m.respond-down(v.$breakpoint-md) {
+    span:last-child {
+      display: none;
+    }
+  }
+}
+
+.sidebar__nav-icon {
+  font-size: v.$font-size-base;
+}
+
+.sidebar__footer {
+  font-size: v.$font-size-xs;
+  color: v.$color-text-muted;
+  line-height: 1.5;
+
+  @include m.respond-down(v.$breakpoint-md) {
+    display: none;
+  }
+}
+
+.sidebar__footer-sub {
+  color: v.$color-accent-secondary;
+}

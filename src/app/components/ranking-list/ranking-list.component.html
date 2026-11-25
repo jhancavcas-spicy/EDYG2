@@ -1,0 +1,24 @@
+<div class="rank-list">
+  @for (song of songs; track song.id; let i = $index) {
+    <article
+      class="rank-card"
+      [class.is-selected]="song.id === selectedSongId"
+      (click)="onSelect(song)"
+      (keyup.enter)="onSelect(song)"
+      tabindex="0"
+      role="button"
+    >
+      <div class="rank-card__position" [class.rank-card__position--top]="i < 3">{{ i + 1 }}</div>
+      <div class="rank-card__info">
+        <p class="rank-card__title">{{ song.title }}</p>
+        <p class="rank-card__artist">{{ song.artist }}</p>
+      </div>
+      <span class="rank-card__plays">{{ song.plays | number }}</span>
+    </article>
+  } @empty {
+    <div class="panel__empty">
+      <span>🎧</span>
+      <p>Aún no hay canciones en el ranking.</p>
+    </div>
+  }
+</div>

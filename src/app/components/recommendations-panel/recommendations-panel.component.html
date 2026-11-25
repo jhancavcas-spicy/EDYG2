@@ -1,0 +1,29 @@
+<section class="panel">
+  <header class="panel__header">
+    <div>
+      <h2 class="panel__title">Canciones relacionadas</h2>
+      @if (selectedSong) {
+        <p class="panel__subtitle">Basado en "{{ selectedSong.title }}"</p>
+      }
+    </div>
+    <span class="tag">Grafo no dirigido</span>
+  </header>
+
+  @if (!selectedSong) {
+    <div class="panel__empty">
+      <span>🔗</span>
+      <p>Selecciona una canción para ver sus recomendaciones.</p>
+    </div>
+  } @else if (recommendations.length === 0) {
+    <div class="panel__empty">
+      <span>🙈</span>
+      <p>Esta canción todavía no tiene relaciones registradas.</p>
+    </div>
+  } @else {
+    <div class="recommendation-list song-grid">
+      @for (song of recommendations; track song.id) {
+        <app-song-card [song]="song" [showPlays]="false" (select)="onSelect($event)"></app-song-card>
+      }
+    </div>
+  }
+</section>

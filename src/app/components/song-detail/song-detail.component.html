@@ -1,0 +1,33 @@
+<section class="panel song-detail">
+  <header class="panel__header">
+    <h2 class="panel__title">Canción seleccionada</h2>
+  </header>
+
+  @if (!song) {
+    <div class="panel__empty">
+      <span>🎵</span>
+      <p>Busca o haz clic en una canción para ver su información aquí.</p>
+    </div>
+  } @else {
+    <div class="song-detail__body fade-in">
+      <div class="song-detail__cover">{{ song.title.charAt(0) }}</div>
+      <div class="song-detail__info">
+        <h3 class="song-detail__title">{{ song.title }}</h3>
+        <p class="song-detail__artist">{{ song.artist }}</p>
+
+        <dl class="song-detail__meta">
+          @if (song.album) {
+            <div><dt>Álbum</dt><dd>{{ song.album }}</dd></div>
+          }
+          @if (song.genre) {
+            <div><dt>Género</dt><dd>{{ song.genre }}</dd></div>
+          }
+          @if (song.duration) {
+            <div><dt>Duración</dt><dd>{{ song.duration }}</dd></div>
+          }
+          <div><dt>Reproducciones</dt><dd>{{ song.plays | number }}</dd></div>
+        </dl>
+      </div>
+    </div>
+  }
+</section>

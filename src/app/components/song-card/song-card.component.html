@@ -1,0 +1,23 @@
+<article
+  class="song-card"
+  [class.is-selected]="selected"
+  (click)="onSelect()"
+  (keyup.enter)="onSelect()"
+  tabindex="0"
+  role="button"
+  [attr.aria-pressed]="selected"
+>
+  <div class="song-card__cover">{{ initials }}</div>
+  <h3 class="song-card__title">{{ song.title }}</h3>
+  <p class="song-card__artist">{{ song.artist }}</p>
+
+  @if (showPlays) {
+    <div class="song-card__meta">
+      <span>▶ {{ song.plays | number }} reproducciones</span>
+    </div>
+  }
+
+  @if (song.genre) {
+    <span class="tag">{{ song.genre }}</span>
+  }
+</article>
